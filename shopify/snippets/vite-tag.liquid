@@ -8,7 +8,7 @@
   if path_prefix == '/'
     assign file_url_prefix = 'http://[::]:3000'
   else
-    assign file_url_prefix = 'http://[::]:3000//Users/jamesauble/Projects/Slayed/src/entrypoints/'
+    assign file_url_prefix = 'http://[::]:3000//Users/squidiw/Desktop/myslayed/src/entrypoints/'
   endif
   assign file_url = path | prepend: file_url_prefix
   assign file_name = path | split: '/' | last
