@@ -1,6 +1,7 @@
 frontend/
-modules/
+public/
 static/
+node_modules/
 package.json
 package-lock.json
 vite.config.ts

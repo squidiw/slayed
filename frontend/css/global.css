@@ -1,12 +1,7 @@
-.some-unused-class {
-  --im-not-tree-shaken: 1;
-}
+body {
+  box-sizing: border-box;
 
-@font-face {
-  font-family: 'Open Sans';
-  src: url(@/fonts/OpenSans-Regular.woff2) format('woff2'),
-      url(@/fonts/OpenSans-Regular.woff) format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  header {
+    @apply antialiased;
+  }
 }

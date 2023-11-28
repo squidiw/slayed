@@ -1,0 +1,74 @@
+{% schema %}
+{
+  "name": "Marquee",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="container">
+  <div
+    class="splide marquee"
+    role="group"
+    aria-label="Marquee"
+    data-splide='{"type":"loop","drag":"free","focus":"center","perPage":6,"autoScroll":{"speed":1}}'
+  >
+    <div class="splide__track">
+      <div class="splide__list flex items-center">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when 'text' -%}
+              <span class="splide__slide px-2 inline-block">{{ block.settings.text }}</span>
+            {%- when 'image' -%}
+              <span class="splide__slide px-2 inline-block">
+                <img
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                  src="{{ block.settings.image | image_url: width: 410 }}"
+                  srcset="{{ block.settings.image | image_url: width: 205 }} 1x, {{ block.settings.image | image_url: width: 410 }} 2x"
+                  alt="{{ block.settings.image.alt }}"
+                  class="object-cover h-full"
+                  loading="lazy"
+                >
+              </span>
+          {%- endcase -%}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .marquee .splide__pagination,
+  .marquee .splide__arrows {
+    display: none;
+  }
+</style>

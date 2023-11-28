@@ -1,9 +1,8 @@
 @layer utilities {
-  .pin {
-    @apply inset-0;
+  .variant-radio-input + label {
+    @apply bg-slate-100 text-black;
   }
-
-  .pin-x {
-    @apply inset-x-0;
+  .variant-radio-input:checked + label {
+    @apply bg-cloud-burst-500 text-white;
   }
 }

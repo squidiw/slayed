@@ -40,5 +40,9 @@
     "vite": "^4.5.0",
     "vite-plugin-page-reload": "^0.1.0",
     "vite-plugin-shopify": "^2.2.1"
+  },
+  "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3"
   }
 }
