@@ -18,17 +18,10 @@
           }
         ],
         "default": "radio"
-      }, {
-        "type": "checkbox",
-        "id": "enable_image_zoom",
-        "label": "Enable Image Zoom",
-        "default": true
       }
     ]
   }
 {% endschema %}
-
-<script defer src="{{ 'prodify.js' | asset_url }}"></script>
 
 <div
   class="shopify-section-main-product-inner max-w-[1200px] mx-auto"
@@ -53,15 +46,11 @@
       </span>
       <div
         class="image-wrapper"
-        style="padding-top: 137%; overflow: hidden;"
-        data-image-zoom-container>
+        style="padding-top: 137%; overflow: hidden;">
         {% if product.selected_variant and product.selected_variant.image %}
           {% assign media = product.selected_variant.image %}
         {% else %}
           {% assign media = product.featured_image %}
-        {% endif %}
-        {% if section.settings.enable_image_zoom %}
-          {% render 'product-image-zoom-scripts', image: media, image_container: '[data-image-zoom-container]' %}
         {% endif %}
         <img
           src="{{ media | image_url }}"
@@ -72,7 +61,7 @@
           width="{{ media.width }}"
           class="absolute h-full w-full object-cover"
           loading="eager"
-          data-zoom="{{ media | image_url }}">
+          >
         <h1 class="text-4xl z-50 relative">
           {{ product.selected_or_first_available_variant.options }}
         </h1>
@@ -136,16 +125,19 @@
             <button
               type="submit"
               name="add"
-              class="px-6 hover:bg-cloud-burst-400 bg-cloud-burst-500 text-white w-full h-12 cursor-pointer disabled:cursor-default disabled:bg-gray-200 disabled:text-black"
+              class="px-6 hover:bg-cloud-burst-400 bg-indigo-900 text-white w-full h-12 cursor-pointer disabled:cursor-default disabled:bg-gray-200 disabled:text-black"
               {% if product.selected_or_first_available_variant.available == false %}
               disabled
               {% endif %}>
-              <span>
+              <span class="[[processing]_&]:hidden">
                 {%- if product.selected_or_first_available_variant.available -%}
                   Add to cart
                 {%- else -%}
                   Sold out
                 {%- endif -%}
+              </span>
+              <span class="hidden [[processing]_&]:block">
+                Adding to cart...
               </span>
             </button>
           </div> 
@@ -155,7 +147,7 @@
           {%- if product.selected_or_first_available_variant.available -%}
           <a
           type="button"
-          class="w-full h-12 px-6 text-white bg-cloud-burst-500 flex items-center justify-center hover:after:border-offset-1"
+          class="w-full h-12 px-6 text-white bg-indigo-900 flex items-center justify-center hover:after:border-offset-1"
           :href="`/cart/${selectedVariant}:1`"
           x-show="showBuyNow"
           >

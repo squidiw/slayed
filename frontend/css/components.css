@@ -17,7 +17,19 @@
 
   .btn {
     @apply py-3 px-12 bg-cloud-burst-500 hover:bg-cloud-burst-600 text-white rounded-full transition;
+  }
+
+  .btn-underline {
+    @apply inline-block px-2 py-3 font-medium bg-white text-black underline decoration-2 underline-offset-8 hover:underline-offset-4 transition-all
   } 
+
+  .btn-black{
+    @apply inline-block px-2 py-3 uppercase bg-black text-white border border-black transition-all hover:bg-white hover:text-black 
+  }
+
+  .btn-white{
+    @apply inline-block px-2 py-3 uppercase bg-white text-black border border-black transition-all hover:bg-black hover:text-white 
+  }
 
   .pill-button {
     @apply bg-cloud-burst-500 text-white px-4 rounded-lg cursor-pointer;
@@ -29,5 +41,26 @@
 
   .site-promo-bar-tw-component {
     @apply flex px-4 py-1 top-0 w-full items-center justify-center bg-woodland-500 text-white;
+  }
+
+  .outline-border{
+    @apply before:absolute before:bottom-[15px] before:right-[15px] before:bg-transparent before:h-full before:w-full before:border before:border-solid before:border-[var(--outline-border-color)]
+  }
+
+  .divider{
+    @apply before:absolute before:top-0 before:right-4 before:left-4 lg:before:right-0 lg:before:left-0 lg:before:w-full before:border before:border-solid before:border-[var(--divider-color)]
+  }
+
+  .custom-dot-style{
+    @apply absolute block cursor-pointer w-[var(--dot-size)] h-[var(--dot-size)] bg-red-600 rounded-full animate-pulse
+  }
+  .multicolumn{
+    @apply grid 
+    grid-cols-[repeat(var(--grid-columns-mobile),minmax(0,_1fr))] 
+    lg:grid-cols-[repeat(var(--grid-columns-desktop),minmax(0,_1fr))]
+    gap-x-[var(--grid-gap-column-mobile)]
+    lg:gap-x-[var(--grid-gap-column-desktop)]
+    gap-y-[var(--grid-gap-row-mobile)]
+    lg:gap-y-[var(--grid-gap-row-desktop)]
   }
 }

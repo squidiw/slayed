@@ -1,42 +1,66 @@
 import "liquid-ajax-cart";
 
-import Alpine from 'alpinejs'
-import AlpineCollapse from '@alpinejs/collapse'
-import AlpineFocus from '@alpinejs/focus'
-import AlpineMorph from '@alpinejs/morph'
-import AlpineScrolled from '../alpine/plugins/scrolled'
-import AlpineWire from '../alpine/plugins/wire'
-import AlpineGlobals from '../alpine/index.js'
+import Alpine from "alpinejs";
+import AlpineCollapse from "@alpinejs/collapse";
+import AlpineFocus from "@alpinejs/focus";
+import AlpineMorph from "@alpinejs/morph";
+import AlpineWire from "../js/alpine/plugins/wire";
+import AlpineGlobals from "../js/alpine/index.js";
+import helpers, { hasBodyClass } from "../js/helpers.js";
+import "@splidejs/splide/css";
+import { Splide } from "@splidejs/splide";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 
-import helpers from '../includes/helpers.js'
-import '../includes/a11y.js'
+// Dynamic imports
+hasBodyClass("product-template") && import("../js/prodify.js");
 
-// import '../css/theme.css'
+//Splide
+window.Splide = Splide;
+window.SplideScroll = AutoScroll;
 
-const ns = 'slayed'
+//Loop for default Splide Slider
+const splideSliders = document.querySelectorAll(".splide.default");
+splideSliders.forEach(slider => {
+	new Splide(slider).mount();
+});
 
-window.slayedNamespace = ns
-window[ns] = (window[ns] || {})
-window[ns].helpers = helpers
+//Loop for marquee Splide Slider
+const splideMarquees = document.querySelectorAll(".splide.marquee");
+splideMarquees.forEach(marquee => {
+	new Splide(marquee).mount({ AutoScroll });
+});
+
+// Lookbook Slider
+const splideLookBook = document.querySelectorAll(".splide.lookbook");
+let customDots = document.querySelectorAll(".custom-dot");
+
+splideLookBook.forEach(slider => {
+	let splide = new Splide(slider).mount();
+	customDots.forEach((dot, index) => {
+		dot.addEventListener("click", () => {
+			splide.go(index);
+		});
+	});
+});
+
+// Splide End
+
+const ns = "slayed";
+
+window.slayedNamespace = ns;
+window[ns] = window[ns] || {};
+window[ns].helpers = helpers;
 
 for (const [key, value] of Object.entries(helpers)) {
-  window[ns].helpers[key] = value
+	window[ns].helpers[key] = value;
 }
 
 // Register and initialize AlpineJS
-window.Alpine = Alpine
+window.Alpine = Alpine;
 
-Alpine.plugin(
-  [
-    AlpineCollapse,
-    AlpineFocus,
-    AlpineScrolled,
-    AlpineWire,
-    AlpineMorph
-  ]
-)
-AlpineGlobals.register(Alpine)
-Alpine.start()
+Alpine.plugin([AlpineCollapse, AlpineFocus, AlpineWire, AlpineMorph]);
+AlpineGlobals.register(Alpine);
+Alpine.start();
 
 // Hide the Shopify preview bar when in development
 // if (process.env.NODE_ENV === 'development') {
@@ -51,4 +75,3 @@ Alpine.start()
 //     style.appendChild(document.createTextNode(css))
 //   })
 // }
-

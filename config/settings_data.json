@@ -1,9 +1,16 @@
 {
   "current": {
+    "show_static_bar": false,
     "show_promo_bar": true,
+    "collapse_promo_bar": true,
     "promo_bar_content": "<p>Promo Content<\/p>",
     "enable_predictive_search": true,
     "enable_modal": false,
+    "outline_b_color": "#000000",
+    "grid-columns-desktop": 2,
+    "grid-columns-mobile": 2,
+    "grid-gap-column-desktop": 32,
+    "grid-gap-column-mobile": 24,
     "checkout_logo_image": "shopify:\/\/shop_images\/62c73f0abd956f48cca683d9_4bNa5cCDFPP7_16T0grGJvHZXl_OBBUqXqUTpHmG5yqB9liv19wLCP1imCk2xUGdCdVI85078T_ZJ85NzRmH2SMUyuv05LLPXr3IQcmYtT9GHXACz5bKLH7EALVbzBQ2VniAMTpDo9BvZHmY5w.png",
     "checkout_logo_position": "center",
     "checkout_logo_size": "medium",
@@ -14,7 +21,57 @@
     "sections": {
       "header": {
         "type": "header",
+        "blocks": {
+          "3653e70b-e1e8-470e-8594-94552c4305ff": {
+            "type": "megamenu",
+            "settings": {
+              "megamenu_title": "home",
+              "megamenu_collection": "hydrogen",
+              "use_custom_url": true,
+              "megamenu_custom_link": "https:\/\/google.com",
+              "megamenu_img": "shopify:\/\/shop_images\/woman-in-the-city_925x_60ce2db9-d36d-402c-8309-526e8d4b5f19.jpg"
+            }
+          },
+          "84090092-ce53-400d-9d5c-4b82180fff0d": {
+            "type": "megamenu",
+            "settings": {
+              "megamenu_title": "home",
+              "megamenu_collection": "apparel",
+              "use_custom_url": false,
+              "megamenu_custom_link": "",
+              "megamenu_img": "shopify:\/\/shop_images\/putting-on-your-shoes_925x_05567196-c375-4d64-aa34-82d4fa74c144.jpg"
+            }
+          },
+          "4fe08a06-ee43-41a4-a6a2-7101b264f916": {
+            "type": "megamenu",
+            "settings": {
+              "megamenu_title": "home",
+              "megamenu_collection": "",
+              "use_custom_url": false,
+              "megamenu_custom_link": "",
+              "megamenu_img": "shopify:\/\/shop_images\/smiling-woman-poses_925x_2560c663-0125-47fd-ae5e-8df28e4b206b.jpg"
+            }
+          },
+          "49d76b5f-6fb6-49a1-8357-1d0b5c9f2c1a": {
+            "type": "megamenu",
+            "settings": {
+              "megamenu_title": "home",
+              "megamenu_collection": "",
+              "use_custom_url": false,
+              "megamenu_custom_link": "",
+              "megamenu_img": "shopify:\/\/shop_images\/woman-outside-brownstone_925x_9842480b-e697-4390-a53b-d2d50eae340e.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "3653e70b-e1e8-470e-8594-94552c4305ff",
+          "84090092-ce53-400d-9d5c-4b82180fff0d",
+          "4fe08a06-ee43-41a4-a6a2-7101b264f916",
+          "49d76b5f-6fb6-49a1-8357-1d0b5c9f2c1a"
+        ],
         "settings": {
+          "menu": "",
+          "desktop_menu": "main-menu"
         }
       },
       "minicart": {
@@ -36,6 +93,68 @@
       "modal": {
         "type": "modal",
         "settings": {
+        }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "955bacc0-075e-4cf1-8afb-66b9385722f3": {
+            "type": "text",
+            "settings": {
+              "promo_text": "Promo bar dummy text"
+            }
+          },
+          "41ad94e8-f737-416c-acd7-770a4d63513b": {
+            "type": "text",
+            "settings": {
+              "promo_text": "Promo bar dummy text two"
+            }
+          },
+          "5ac2b4b9-b9a5-4833-baff-f4c22beb2612": {
+            "type": "text",
+            "settings": {
+              "promo_text": "Promo bar dummy text three"
+            }
+          }
+        },
+        "block_order": [
+          "955bacc0-075e-4cf1-8afb-66b9385722f3",
+          "41ad94e8-f737-416c-acd7-770a4d63513b",
+          "5ac2b4b9-b9a5-4833-baff-f4c22beb2612"
+        ],
+        "settings": {
+        }
+      },
+      "static-bar": {
+        "type": "static-bar",
+        "blocks": {
+          "54462381-6431-4c0f-9f46-750deb602ba0": {
+            "type": "text",
+            "settings": {
+              "static_text": "Static bar dummy text"
+            }
+          },
+          "95f8b138-c0a8-489c-8a15-4837bf668fb8": {
+            "type": "text",
+            "settings": {
+              "static_text": "Static bar dummy text"
+            }
+          },
+          "6a3b1473-71ad-40fe-862f-dc4cffc72866": {
+            "type": "text",
+            "settings": {
+              "static_text": "Static bar dummy text"
+            }
+          }
+        },
+        "block_order": [
+          "54462381-6431-4c0f-9f46-750deb602ba0",
+          "95f8b138-c0a8-489c-8a15-4837bf668fb8",
+          "6a3b1473-71ad-40fe-862f-dc4cffc72866"
+        ],
+        "settings": {
+          "bg_color": "#ffffff",
+          "txt_color": "#000000"
         }
       }
     },

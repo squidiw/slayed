@@ -1,0 +1,73 @@
+{% schema %}
+{
+  "name": "Multicolumn",
+  "tag": "section",
+  "settings": [],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "name": "Collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_prefered_image",
+          "label": "Use Prefered Image",
+          "info": "Leave unchecked if collection's featured image should be used"
+        },
+        {
+          "type": "image_picker",
+          "id": "prefered_image",
+          "label": "Prefered Image"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button Text",
+          "default": "shop all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multicolumn"
+    }
+  ]
+}
+{% endschema %}
+
+<div
+  class="container multicolumn"
+>
+  {% comment %} repeat(3, minmax(0, 1fr)) {% endcomment %}
+  {% for block in section.blocks %}
+    {%- case block.type -%}
+      {%- when 'collection' -%}
+        {% liquid
+          assign image = ''
+          assign collection_featured_image = block.settings.collection.featured_image
+          assign prefered_image = block.settings.prefered_image
+
+          if block.settings.use_prefered_image == true
+            assign image = prefered_image
+          else
+            assign image = collection_featured_image
+          endif
+        %}
+        <div class="flex flex-col justify-center items-center gap-10">
+          <div>
+            {% render 'component-image', image: image %}
+          </div>
+          <span class="block">
+            <a href="{{ block.settings.collection.url }}" class="btn-underline">{{ block.settings.btn_text }}</a>
+          </span>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>

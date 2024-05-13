@@ -1,7 +1,6 @@
 class Prodify {
   constructor(settings) {
     this.settings = {
-      showSoldOutLabels: false,
       ...settings
     }
 
@@ -22,7 +21,7 @@ class Prodify {
     this.textStrings = {
       addToCart: window.variantStrings.addToCart,
       unavailableVariantValueLabel: window.variantStrings.unavailable_with_option,
-      soldOutVariantValueLabel: '[value] - Sold Out',
+      soldOutVariantValueLabel: window.variantStrings.soldout_with_option,
       addButtonTextUnavailable: window.variantStrings.unavailable,
     }
 
@@ -124,6 +123,7 @@ class Prodify {
   }
 
   onVariantChange = (event) => {
+
     this.updateCurrentOptions()
     this.updateCurrentVariant()
     this.updateAddButtonDom(true, '', false)
@@ -184,16 +184,16 @@ class Prodify {
     })
   }
 
-  setInputAvailability(optionInputs, availableOptionValues, existingOptionInputsValues) {
+  setInputAvailability(optionInputs, availableOptionInputValues, existingOptionInputsValues) {
     optionInputs.forEach((input) => {
-      if (availableOptionValues.includes(input.getAttribute('value'))) {
+      if (availableOptionInputValues.includes(input.getAttribute('value'))) {
         if (this.pickerType == 'select') {
           input.innerText = input.getAttribute('value')
           return
         }
         input.classList.remove('disabled')
       } else {
-        if (existingOptionInputsValues.includes(input.getAttribute('value')) && this.settings.showSoldOutLabels) {
+        if (existingOptionInputsValues.includes(input.getAttribute('value'))) {
           if (this.pickerType == 'select') {
             input.innerText = this.textStrings.soldOutVariantValueLabel.replace(
               '[value]',
@@ -243,24 +243,7 @@ class Prodify {
           addButtonTarget.replaceWith(addButtonSource)
         }
 
-        if (window.Drift) {
-          this.reInitProductZoom()
-        }
       })
-  }
-
-  reInitProductZoom() {
-    if (window.productZoom) {
-      window.productZoom.destroy()
-
-      window.productZoom = new Drift(
-        document.querySelector(`${window.productZoomContainerSelector} [data-zoom]`),
-        {
-          paneContainer: document.querySelector(`${window.productZoomContainerSelector}`),
-          inlinePane: false,
-        }
-      )
-    }
   }
 
   getVariantData = () => {
@@ -270,8 +253,4 @@ class Prodify {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  window.prodify = new Prodify({
-    showSoldOutLabels: false
-  })
-})
+window.prodify = new Prodify()

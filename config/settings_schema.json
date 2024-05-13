@@ -4,12 +4,21 @@
     "theme_name": "Shopify Theme Lab",
     "theme_version": "1.0.0",
     "theme_author": "THEME_AUTHOR",
-    "theme_documentation_url": "https://THEME_DOCUMENTATION_URL.com",
-    "theme_support_url": "https://THEME_SUPPORT_URL.com"
+    "theme_documentation_url": "https:\/\/THEME_DOCUMENTATION_URL.com",
+    "theme_support_url": "https:\/\/THEME_SUPPORT_URL.com"
   },
   {
     "name": "Theme Settings",
     "settings": [
+      {
+        "type": "header",
+        "content": "Static Bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_static_bar",
+        "label": "Show Static Bar"
+      },
       {
         "type": "header",
         "content": "Promo Bar"
@@ -59,6 +68,97 @@
         "id": "modal_description",
         "label": "Description",
         "default": "Modal Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque totam cum cupiditate officia et quaerat blanditiis culpa? Hic, nesciunt id."
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "outline_b_color",
+        "label": "Outline Border Color"
+      },
+      {
+        "type": "color",
+        "id":"divider_color",
+        "label":"Divider Color",
+        "default":"#aaaaaa"
+      }
+    ]
+  },
+  {
+    "name": "Grid Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Columns"
+      },
+      {
+        "type": "range",
+        "id": "grid-columns-desktop",
+        "label": "Grid Columns Desktop",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "grid-columns-mobile",
+        "label": "Grid Columns Mobile",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "header",
+        "content": "Gaps"
+      },
+      {
+        "type": "range",
+        "id": "grid-gap-column-desktop",
+        "label": "Grid Gap Column Desktop",
+        "min": 20,
+        "max": 32,
+        "step": 4,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "grid-gap-column-mobile",
+        "label": "Grid Gap Column Mobile",
+        "min": 20,
+        "max": 32,
+        "step": 4,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "header",
+        "content": "Rows"
+      },
+      {
+        "type": "range",
+        "id": "grid-gap-row-desktop",
+        "label": "Grid Row Column Desktop",
+        "min": 20,
+        "max": 32,
+        "step": 4,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "grid-gap-row-mobile",
+        "label": "Grid Row Column Mobile",
+        "min": 20,
+        "max": 32,
+        "step": 4,
+        "unit": "px",
+        "default": 20
       }
     ]
   }

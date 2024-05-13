@@ -1,0 +1,58 @@
+{% schema %}
+{
+  "name": "Quick Collection Nav",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Title",
+      "default": "top shopped collections"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Divider Color",
+      "default": "#aaaaaa"
+    }
+  ],
+  "max_blocks": 1,
+  "blocks": [
+    {
+      "name": "Collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection_list",
+          "id": "collection_list",
+          "label": "Collections",
+          "limit": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quick Collection Navigation"
+    }
+  ]
+}
+{% endschema %}
+<div class="container relative pt-10 pb-8 no-def-padding-desktop divider">
+  <h2 class="h3 lg:h2 inline-block mb-7">{{ section.settings.heading }}</h2>
+  <div class="flex flex-wrap gap-5 lg:gap-16">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'collection' %}
+          {% for collection in block.settings.collection_list %}
+            <a
+              href="{{ collection.url }}"
+              class="uppercase underline underline-offset-8 text-lg lg:text-xl hover:underline-offset-[6px] transition-all"
+            >
+              {{- collection.title -}}
+            </a>
+          {% endfor %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
